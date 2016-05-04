@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8" /> 
+<style>
+body {
+    max-width: 960px;
+}
+canvas {
+    cursor: crosshair
+}
+select {
+    display: table;
+    margin: 0 auto;
+}
+</style>
+<body>
+<script src="d3.min.js"></script>
+<script src="topojson.min.js"></script>
+<script src="rbush.min.js"></script>
+<script src="d3.geo.projection.min.js"></script>
+<script src="spam.min.js"></script>
+<script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+
+<script type='text/javascript'>
+var hover = null
+
+var width = 960
+var height = 500
+var graticule = d3.geo.graticule()
+
+// Get the list of the voices
+var voicelist = responsiveVoice.getVoices()
+
+// Create the selector
+d3.select("body").append("select")
+    .selectAll("option")
+    .data(voicelist)
+    .enter()
+    .append("option")
+    .text(function (d) {
+        return d.name
+    })
+    .attr("value", function (d) {
+        return d.name
+    })
+
+// Fire the lang function according to the selector
+d3.select("select").on("change", lang);
+
+function lang() {
+    var selectedValue = d3.event.target.value
+
+    // Set the voice
+    return responsiveVoice.setDefaultVoice(selectedValue)
+}
+
+d3.json("world.json", function(error, d) {
+    topojson.presimplify(d)
+    
+    var map = new StaticCanvasMap({
+        element: "body",
+        width: width,
+        projection: d3.geo.robinson(),
+        data: [{
+                features: topojson.feature(d, d.objects["countries"]),
+                static: {
+                    prepaint: function(parameters) {
+                        parameters.context.beginPath()
+                        parameters.path(graticule())
+                        parameters.context.lineWidth = 0.5
+                        parameters.context.strokeStyle = 'rgb(200,200,200)'
+                        parameters.context.stroke()
+
+                        parameters.context.beginPath()
+                        parameters.path({type: "Sphere"})
+                        parameters.context.lineWidth = 1
+                        parameters.context.strokeStyle = 'rgb(30,30,30)'
+                        parameters.context.stroke()
+                    },
+                    paintfeature: function(parameters, d) {
+                        parameters.context.lineWidth = 0.5
+                        parameters.context.strokeStyle = 'rgb(30,30,30)'
+                        parameters.context.stroke()
+
+                        parameters.context.fillStyle = "rgb(188, 223, 255)";
+                        parameters.context.fill()
+                    }
+                },
+                dynamic: {
+                    postpaint: function(parameters) {
+                        if (!hover)
+                            return
+
+                        parameters.context.beginPath()
+                        parameters.context.lineWidth = 1 / parameters.scale
+                        parameters.path(hover)
+                        parameters.context.stroke()
+                    }
+                },
+                events: {
+                    click: function(parameters, d) {
+                        // When clicking on a feature, say the name of that country
+                        d && responsiveVoice.speak(d.id)
+                    },
+                    hover: function(parameters, d) {
+                        hover = d
+
+                        parameters.map.paint()
+                    }
+                }
+            }
+        ]
+    })
+    map.init()
+})
+</script>
