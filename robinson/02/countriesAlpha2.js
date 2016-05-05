@@ -132,7 +132,7 @@ var countriesAlpha2 = [
       "Code":"IO"
    },
    {  
-      "Name":"Brunei Darussalam",
+      "Name":"Brunei",
       "Code":"BN"
    },
    {  
@@ -234,6 +234,10 @@ var countriesAlpha2 = [
    {  
       "Name":"Cyprus",
       "Code":"CY"
+   },
+   {
+      "Name":"Northern Cyprus",
+      "Code":"CYN"
    },
    {  
       "Name":"Czech Republic",
@@ -416,7 +420,7 @@ var countriesAlpha2 = [
       "Code":"ID"
    },
    {  
-      "Name":"Iran, Islamic Republic of",
+      "Name":"Iran",
       "Code":"IR"
    },
    {  
@@ -468,11 +472,11 @@ var countriesAlpha2 = [
       "Code":"KI"
    },
    {  
-      "Name":"Korea, Democratic People's Republic of",
+      "Name":"North Korea",
       "Code":"KP"
    },
    {  
-      "Name":"Korea, Republic of",
+      "Name":"South Korea",
       "Code":"KR"
    },
    {  
@@ -488,7 +492,7 @@ var countriesAlpha2 = [
       "Code":"KG"
    },
    {  
-      "Name":"Lao People's Democratic Republic",
+      "Name":"Laos",
       "Code":"LA"
    },
    {  
@@ -584,7 +588,7 @@ var countriesAlpha2 = [
       "Code":"FM"
    },
    {  
-      "Name":"Moldova, Republic of",
+      "Name":"Moldova",
       "Code":"MD"
    },
    {  
@@ -872,11 +876,11 @@ var countriesAlpha2 = [
       "Code":"CH"
    },
    {  
-      "Name":"Syrian Arab Republic",
+      "Name":"Syria",
       "Code":"SY"
    },
    {  
-      "Name":"Taiwan, Province of China",
+      "Name":"Taiwan",
       "Code":"TW"
    },
    {  
@@ -892,7 +896,7 @@ var countriesAlpha2 = [
       "Code":"TH"
    },
    {  
-      "Name":"Timor-Leste",
+      "Name":"East Timor",
       "Code":"TL"
    },
    {  
@@ -972,7 +976,7 @@ var countriesAlpha2 = [
       "Code":"VE"
    },
    {  
-      "Name":"Viet Nam",
+      "Name":"Vietnam",
       "Code":"VN"
    },
    {  

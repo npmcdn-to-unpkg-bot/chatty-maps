@@ -55,6 +55,7 @@ var i18n = {
 	"HR": "Croacia",
 	"CU": "Cuba",
 	"CY": "Chipre",
+	"CYN": "Chipre del Norte",
 	"CZ": "República Checa",
 	"DK": "Dinamarca",
 	"DJ": "Djibouti",
@@ -112,7 +113,7 @@ var i18n = {
 	"KI": "Kiribati",
 	"KP": "Corea, La República Popular Democrática de",
 	"KR": "Corea, La República de",
-	"XK": "Kosovo"
+	"XK": "Kosovo",
 	"KW": "Kuwait",
 	"KG": "Kirguistán",
 	"LA": "Lao, República Democrática Popular",
