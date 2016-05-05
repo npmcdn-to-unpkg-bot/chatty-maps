@@ -532,7 +532,7 @@ var countriesAlpha2 = [
       "Code":"MO"
    },
    {  
-      "Name":"Macedonia, the Former Yugoslav Republic of",
+      "Name":"Macedonia",
       "Code":"MK"
    },
    {  

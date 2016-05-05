@@ -1,5 +1,5 @@
  [
-  "SOL": "Somalilandia",
-  "XK": "Kosovo",
-  "CYN": "Chipre del Norte",
+  "CYN": "", // "Northern Cyprus"
+  "XK": "",            // Kosovo
+  "SOL": "",     // Somaliland
  ] 
