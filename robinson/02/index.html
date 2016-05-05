@@ -20,6 +20,7 @@ select {
 <script src="console.js"></script>
 <script src="spam.min.js"></script>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
+<script src='ar.js'></script>
 <script src='es.js'></script>
 <script src='countriesAlpha2.js'></script>
 
@@ -47,9 +48,9 @@ d3.select("body").append("select")
   })
 
 // store the current voice
-var defaultVoice = "Spanish Female";
+var defaultVoice = "Arabic Male" // "Spanish Female";
 var currentVoice = defaultVoice;
-var index = 29; // "Spanish Female"
+var index = 3; // "Arabic Male" // 29 "Spanish Female"
 
 // set the default voice
 d3.select('select').property("selectedIndex", index);
@@ -126,11 +127,21 @@ d3.json("world.json", function(error, d) {
           var language2 = language.substring(0,2);
           console.log('language', language, 'language2', language2);
           var countryName = d.id;
+          var countryCode;
 
-          if (language2 === "es") {
-            var countryCode = alpha2Lookup[d.id];
-            countryName = i18n[countryCode];
+          switch(language2) {
+            case 'ar':
+              countryCode = alpha2Lookup[d.id];
+              countryName = ARi18n[countryCode];
+              break;
+            case 'es':
+              countryCode = alpha2Lookup[d.id];
+              countryName = ESi18n[countryCode];
+              break;
+            default:
+              break;
           }
+          
           console.log('countryName', countryName, 'countryCode', countryCode);
 
           // When clicking on a feature, say the name of that country

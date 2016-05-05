@@ -7,6 +7,8 @@ DONE + manually verify country names
   - Australia
   - Antartica
   - Asia
++ add other languages from i18n-iso-countries
+
 
 
 + add iso-3166-1-alpha-2 code to country paths in spam.js

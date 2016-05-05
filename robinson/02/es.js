@@ -1,4 +1,4 @@
-var i18n = {
+var ESi18n = {
 	"AF": "Afganistán",
 	"AL": "Albania",
 	"DZ": "Argelia",
