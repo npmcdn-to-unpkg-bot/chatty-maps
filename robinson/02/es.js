@@ -112,6 +112,7 @@ var i18n = {
 	"KI": "Kiribati",
 	"KP": "Corea, La República Popular Democrática de",
 	"KR": "Corea, La República de",
+	"XK": "Kosovo"
 	"KW": "Kuwait",
 	"KG": "Kirguistán",
 	"LA": "Lao, República Democrática Popular",
@@ -193,6 +194,7 @@ var i18n = {
 	"SI": "Eslovenia",
 	"SB": "Islas Salomón",
 	"SO": "Somalia",
+	"SOL": "Somalilandia",
 	"ZA": "Sudáfrica",
 	"GS": "Georgia del Sur y las Islas Sandwich del Sur",
 	"ES": "España",
@@ -247,5 +249,5 @@ var i18n = {
 	"MF": "Saint Martin (parte francesa)",
 	"RS": "Serbia",
 	"SX": "Sint Maarten (parte neerlandesa)",
-	"SS": "Sudán del Sur"
+	"SS": "Sudán del Sur",
 };

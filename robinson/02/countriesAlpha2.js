@@ -200,11 +200,11 @@ var countriesAlpha2 = [
       "Code":"KM"
    },
    {  
-      "Name":"Congo",
+      "Name":"Republic of Congo",
       "Code":"CG"
    },
    {  
-      "Name":"Congo, the Democratic Republic of the",
+      "Name":"Democratic Republic of the Congo",
       "Code":"CD"
    },
    {  
@@ -216,7 +216,7 @@ var countriesAlpha2 = [
       "Code":"CR"
    },
    {  
-      "Name":"Côte d'Ivoire",
+      "Name":"Ivory Coast",
       "Code":"CI"
    },
    {  
@@ -372,7 +372,7 @@ var countriesAlpha2 = [
       "Code":"GN"
    },
    {  
-      "Name":"Guinea-Bissau",
+      "Name":"Guinea Bissau",
       "Code":"GW"
    },
    {  
@@ -474,6 +474,10 @@ var countriesAlpha2 = [
    {  
       "Name":"Korea, Republic of",
       "Code":"KR"
+   },
+   {  
+      "Name":"Kosovo",
+      "Code":"XK"
    },
    {  
       "Name":"Kuwait",
@@ -784,7 +788,7 @@ var countriesAlpha2 = [
       "Code":"SN"
    },
    {  
-      "Name":"Serbia",
+      "Name":"Republic of Serbia",
       "Code":"RS"
    },
    {  
@@ -818,6 +822,10 @@ var countriesAlpha2 = [
    {  
       "Name":"Somalia",
       "Code":"SO"
+   },
+   {  
+      "Name":"Somaliland",
+      "Code":"SOL"
    },
    {  
       "Name":"South Africa",
@@ -876,7 +884,7 @@ var countriesAlpha2 = [
       "Code":"TJ"
    },
    {  
-      "Name":"Tanzania, United Republic of",
+      "Name":"United Republic of Tanzania",
       "Code":"TZ"
    },
    {  
