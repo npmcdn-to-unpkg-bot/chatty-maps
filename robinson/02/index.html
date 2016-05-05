@@ -21,6 +21,7 @@ select {
 <script src="spam.min.js"></script>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script src='ar.js'></script>
+<script src='de.js'></script>
 <script src='es.js'></script>
 <script src='countriesAlpha2.js'></script>
 
@@ -133,6 +134,10 @@ d3.json("world.json", function(error, d) {
             case 'ar':
               countryCode = alpha2Lookup[d.id];
               countryName = ARi18n[countryCode];
+              break;
+            case 'de':
+              countryCode = alpha2Lookup[d.id];
+              countryName = DEi18n[countryCode];            
               break;
             case 'es':
               countryCode = alpha2Lookup[d.id];
