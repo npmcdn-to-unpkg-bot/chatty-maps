@@ -23,6 +23,7 @@ select {
 <script src='ar.js'></script>
 <script src='de.js'></script>
 <script src='es.js'></script>
+<script src='et.js'></script>
 <script src='countriesAlpha2.js'></script>
 
 <script type='text/javascript'>
@@ -143,6 +144,10 @@ d3.json("world.json", function(error, d) {
               countryCode = alpha2Lookup[d.id];
               countryName = ESi18n[countryCode];
               break;
+            case 'et':
+              countryCode = alpha2Lookup[d.id];
+              countryName = ETi18n[countryCode];
+              break;              
             default:
               break;
           }
