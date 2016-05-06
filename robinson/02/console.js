@@ -1,3 +1,4 @@
+// http://stackoverflow.com/questions/8000009/is-there-a-way-in-javascript-to-listen-console-events
 var logOfConsole = [];
 
 var _log = console.log,

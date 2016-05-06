@@ -8,7 +8,7 @@ DONE + manually verify country names
   - Antartica
   - Asia
 DONE + add other languages from i18n-iso-countries
-+ filter select to only show languages with
+DONE + filter select to only show languages with
   translated country names
 
 
