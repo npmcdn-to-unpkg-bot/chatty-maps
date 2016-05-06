@@ -14,6 +14,7 @@ select {
 </style>
 <body>
 <script src="d3.min.js"></script>
+<script src="https://npmcdn.com/babel-core@5.8.34/browser.min.js"></script>
 <script src="topojson.min.js"></script>
 <script src="rbush.min.js"></script>
 <script src="d3.geo.projection.min.js"></script>
@@ -31,20 +32,95 @@ select {
 <script src='sv.js'></script>
 <script src='countriesAlpha2.js'></script>
 
-<script type='text/javascript'>
-var hover = null
+<script type='text/babel'>
+let hover = null
 
 var width = 960
 var height = 500
 var graticule = d3.geo.graticule()
 
 // Get the list of the voices
-var voicelist = responsiveVoice.getVoices()
+var voiceList = responsiveVoice.getVoices()
+const voiceListArray = voiceList.map(d => d.name);
+console.log('available voices from the ResponseVoice API', voiceListArray)
+
+// Define the list of voices that we want to display
+// each voice in this list has a list of country names
+// in their native language
+// this way both the word spoken fits the accent
+const displayVoiceList = [  
+   "UK English Female",
+   "UK English Male",
+   "US English Female",
+   "Arabic Male",
+   // "Armenian Male",
+   "Australian Female",
+   "Brazilian Portuguese Female",
+   // "Chinese Female",
+   // "Czech Female",
+   // "Danish Female",
+   "Deutsch Female",
+   "Dutch Female",
+   // "Finnish Female",
+   "French Female",
+   // "Greek Female",
+   // "Hatian Creole Female",
+   // "Hindi Female",
+   // "Hungarian Female",
+   // "Indonesian Female",
+   // "Italian Female",
+   // "Japanese Female",
+   // "Korean Female",
+   // "Latin Female",
+   // "Norwegian Female",
+   // "Polish Female",
+   "Portuguese Female",
+   // "Romanian Male",
+   // "Russian Female",
+   // "Slovak Female",
+   "Spanish Female",
+   "Spanish Latin American Female",
+   "Swedish Female",
+   // "Tamil Male",
+   // "Thai Female",
+   // "Turkish Female",
+   // "Afrikaans Male",
+   // "Albanian Male",
+   // "Bosnian Male",
+   // "Catalan Male",
+   // "Croatian Male",
+   // "Czech Male",
+   // "Danish Male",
+   // "Esperanto Male",
+   "Finnish Male",
+   // "Greek Male",
+   // "Hungarian Male",
+   // "Icelandic Male",
+   // "Latin Male",
+   // "Latvian Male",
+   // "Macedonian Male",
+   // "Moldavian Male",
+   // "Montenegrin Male",
+   // "Norwegian Male",
+   // "Serbian Male",
+   // "Serbo-Croatian Male",
+   // "Slovak Male",
+   // "Swahili Male",
+   "Swedish Male",
+   // "Vietnamese Male",
+   // "Welsh Male",
+   "US English Male",
+   "Fallback UK Female"
+]
+console.log('voices whose languages we have country names for', displayVoiceList);
+
+let displayVoiceArrayOfObjects = [];
+displayVoiceList.forEach((d, i) => displayVoiceArrayOfObjects.push({ 'name': d }));
 
 // Create the selector
 d3.select("body").append("select")
   .selectAll("option")
-  .data(voicelist)
+  .data(displayVoiceArrayOfObjects)
   .enter()
   .append("option")
   .text(function (d) {
@@ -55,9 +131,9 @@ d3.select("body").append("select")
   })
 
 // store the current voice
-var defaultVoice = "Arabic Male" // "Spanish Female";
+var defaultVoice = "Spanish Female";
 var currentVoice = defaultVoice;
-var index = 3; // "Arabic Male" // 29 "Spanish Female"
+var index = 10; // "Spanish Female"
 
 // set the default voice
 d3.select('select').property("selectedIndex", index);
@@ -131,8 +207,10 @@ d3.json("world.json", function(error, d) {
           // speak silently to find out the language of the currentVoice
           responsiveVoice.speak("", currentVoice, {volume: 0})
           var language = logOfConsole[logOfConsole.length - 1].arguments[0]['lang'];
-          var language2 = language.substring(0,2);
-          console.log('language', language, 'language2', language2);
+          if (typeof language !== 'undefined') {
+            var language2 = language.substring(0,2);
+            console.log('language', language, 'language2', language2);
+          }
           var countryName = d.id;
           var countryCode;
 
