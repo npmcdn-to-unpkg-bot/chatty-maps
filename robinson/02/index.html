@@ -24,6 +24,7 @@ select {
 <script src='de.js'></script>
 <script src='es.js'></script>
 <script src='et.js'></script>
+<script src='fi.js'></script>
 <script src='countriesAlpha2.js'></script>
 
 <script type='text/javascript'>
@@ -147,6 +148,10 @@ d3.json("world.json", function(error, d) {
             case 'et':
               countryCode = alpha2Lookup[d.id];
               countryName = ETi18n[countryCode];
+              break;
+            case 'fi':
+              countryCode = alpha2Lookup[d.id];
+              countryName = FIi18n[countryCode];              
               break;              
             default:
               break;
