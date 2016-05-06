@@ -12,5 +12,7 @@ the script tag that includes babel on the page is from the bl.ock [ES2015 Sequen
 
 localized country names are sourced from the [i18n-iso-countries](https://github.com/michaelwittig/node-i18n-iso-countries) project by [@hellomichibye](https://twitter.com/hellomichibye).  want to add your language? just translate this [list of country names](https://github.com/michaelwittig/node-i18n-iso-countries/blob/master/en.js) and send [michaelwittig](https://github.com/michaelwittig) a pull request!
 
+the map itself is drawn with [spam.js](https://github.com/newsappsio/spam), a small library for to declaratively creating modern [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) maps with [D3](https://d3js.org/). [spam.js](https://github.com/newsappsio/spam) makes it easy to create static or zoomable maps with automatic projection and retina resolution.
+
 oh and the voices? the voices you ask? they're from [http://responsivevoice.org/](http://responsivevoice.org/) [API docs](http://responsivevoice.org/text-to-speech-script-server/) [source code](https://code.responsivevoice.org/responsivevoice.src.js)
 
