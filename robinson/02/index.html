@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<meta charset="utf-8" /> 
+<meta charset='utf-8' /> 
 <style>
 body {
   max-width: 960px;
@@ -13,13 +13,13 @@ select {
 }
 </style>
 <body>
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="https://npmcdn.com/babel-core@5.8.34/browser.min.js"></script>
-<script src="topojson.min.js"></script>
-<script src="rbush.min.js"></script>
-<script src="d3.geo.projection.min.js"></script>
-<script src="console.js"></script>
-<script src="spam.min.js"></script>
+<script src='https://d3js.org/d3.v3.min.js' charset='utf-8'></script>
+<script src='https://npmcdn.com/babel-core@5.8.34/browser.min.js'></script>
+<script src='topojson.min.js'></script>
+<script src='rbush.min.js'></script>
+<script src='d3.geo.projection.min.js'></script>
+<script src='console.js'></script>
+<script src='spam.min.js'></script>
 <script src='https://code.responsivevoice.org/responsivevoice.js'></script>
 <script src='ar.js'></script>
 <script src='de.js'></script>
@@ -34,13 +34,12 @@ select {
 
 <script type='text/babel'>
 let hover = null
-
-var width = 960
-var height = 500
-var graticule = d3.geo.graticule()
+const width = 960
+const height = 500
+let graticule = d3.geo.graticule()
 
 // Get the list of the voices
-var voiceList = responsiveVoice.getVoices()
+const voiceList = responsiveVoice.getVoices()
 const voiceListArray = voiceList.map(d => d.name);
 console.log('available voices from the ResponseVoice API', voiceListArray)
 
@@ -49,123 +48,119 @@ console.log('available voices from the ResponseVoice API', voiceListArray)
 // in their native language
 // this way both the word spoken fits the accent
 const displayVoiceList = [
-  "Arabic Male",
-  "Brazilian Portuguese Female",
-  "Portuguese Female",
-  "Deutsch Female",
-  "Dutch Female",
-  "Finnish Female",
-  "Finnish Male",
-  "French Female",
-  "Spanish Female",
-  "Spanish Latin American Female",
-  "Swedish Female",
-  "Swedish Male",
-  "Australian Female",
-  "US English Female",
-  "UK English Female",
-  "UK English Male",
-  // "US English Male", // strangely the same as the UK English Male
-  // "Fallback UK Female",
-  // "Armenian Male",
-  // "Chinese Female",
-  // "Czech Female",
-  // "Danish Female",
-  // "Greek Female",
-  // "Hatian Creole Female",
-  // "Hindi Female",
-  // "Hungarian Female",
-  // "Indonesian Female",
-  // "Italian Female",
-  // "Japanese Female",
-  // "Korean Female",
-  // "Latin Female",
-  // "Norwegian Female",
-  // "Polish Female",
-  // "Romanian Male",
-  // "Russian Female",
-  // "Slovak Female",
-  // "Tamil Male",
-  // "Thai Female",
-  // "Turkish Female",
-  // "Afrikaans Male",
-  // "Albanian Male",
-  // "Bosnian Male",
-  // "Catalan Male",
-  // "Croatian Male",
-  // "Czech Male",
-  // "Danish Male",
-  // "Esperanto Male",
-  // "Greek Male",
-  // "Hungarian Male",
-  // "Icelandic Male",
-  // "Latin Male",
-  // "Latvian Male",
-  // "Macedonian Male",
-  // "Moldavian Male",
-  // "Montenegrin Male",
-  // "Norwegian Male",
-  // "Serbian Male",
-  // "Serbo-Croatian Male",
-  // "Slovak Male",
-  // "Swahili Male",
-  // "Vietnamese Male",
-  // "Welsh Male"
+  'Arabic Male',
+  'Brazilian Portuguese Female',
+  'Portuguese Female',
+  'Deutsch Female',
+  'Dutch Female',
+  'Finnish Female',
+  'Finnish Male',
+  'French Female',
+  'Spanish Female',
+  'Spanish Latin American Female',
+  'Swedish Female',
+  'Swedish Male',
+  'Australian Female',
+  'US English Female',
+  'UK English Female',
+  'UK English Male',
+  // 'US English Male', // strangely the same as the UK English Male
+  // 'Fallback UK Female',
+  // 'Armenian Male',
+  // 'Chinese Female',
+  // 'Czech Female',
+  // 'Danish Female',
+  // 'Greek Female',
+  // 'Hatian Creole Female',
+  // 'Hindi Female',
+  // 'Hungarian Female',
+  // 'Indonesian Female',
+  // 'Italian Female',
+  // 'Japanese Female',
+  // 'Korean Female',
+  // 'Latin Female',
+  // 'Norwegian Female',
+  // 'Polish Female',
+  // 'Romanian Male',
+  // 'Russian Female',
+  // 'Slovak Female',
+  // 'Tamil Male',
+  // 'Thai Female',
+  // 'Turkish Female',
+  // 'Afrikaans Male',
+  // 'Albanian Male',
+  // 'Bosnian Male',
+  // 'Catalan Male',
+  // 'Croatian Male',
+  // 'Czech Male',
+  // 'Danish Male',
+  // 'Esperanto Male',
+  // 'Greek Male',
+  // 'Hungarian Male',
+  // 'Icelandic Male',
+  // 'Latin Male',
+  // 'Latvian Male',
+  // 'Macedonian Male',
+  // 'Moldavian Male',
+  // 'Montenegrin Male',
+  // 'Norwegian Male',
+  // 'Serbian Male',
+  // 'Serbo-Croatian Male',
+  // 'Slovak Male',
+  // 'Swahili Male',
+  // 'Vietnamese Male',
+  // 'Welsh Male'
 ]
 console.log('voices whose languages we have country names for', displayVoiceList);
 
 // hard code the relationship between voices and languages
 const languageCodeHash = {
-  "Arabic Male": 'ar',
-  "Brazilian Portuguese Female": 'pt',
-  "Portuguese Female": 'pt',
-  "Deutsch Female": 'de',
-  "Dutch Female": 'nl',
-  "Finnish Female": 'fi',
-  "Finnish Male": 'fi',
-  "French Female": 'fr',
-  "Spanish Female": 'es',
-  "Spanish Latin American Female": 'es',
-  "Swedish Female": 'sv',
-  "Swedish Male": 'sv',
-  "Australian Female": 'en',
-  "US English Female": 'en',
-  "US English Male": 'en',
-  "UK English Female": 'en',
-  "UK English Male": 'en',
-  "Fallback UK Female": 'en',
+  'Arabic Male': 'ar',
+  'Brazilian Portuguese Female': 'pt',
+  'Portuguese Female': 'pt',
+  'Deutsch Female': 'de',
+  'Dutch Female': 'nl',
+  'Finnish Female': 'fi',
+  'Finnish Male': 'fi',
+  'French Female': 'fr',
+  'Spanish Female': 'es',
+  'Spanish Latin American Female': 'es',
+  'Swedish Female': 'sv',
+  'Swedish Male': 'sv',
+  'Australian Female': 'en',
+  'US English Female': 'en',
+  'US English Male': 'en',
+  'UK English Female': 'en',
+  'UK English Male': 'en',
+  'Fallback UK Female': 'en',
 };
 
 let displayVoiceArrayOfObjects = [];
 displayVoiceList.forEach((d, i) => displayVoiceArrayOfObjects.push({ 'name': d }));
 
 // Create the selector
-d3.select("body").append("select")
-  .selectAll("option")
+d3.select('body').append('select')
+  .selectAll('option')
   .data(displayVoiceArrayOfObjects)
   .enter()
-  .append("option")
-  .text(function (d) {
-    return d.name
-  })
-  .attr("value", function (d) {
-    return d.name
-  })
+  .append('option')
+  .text(d => d.name)
+  .attr('value', d => d.name)
 
 // store the current voice
-var defaultVoice = "Spanish Female";
-var currentVoice = defaultVoice;
-var index = 8; // "Spanish Female"
+const defaultVoice = 'Spanish Female';
+let currentVoice = defaultVoice;
+const index = 8; // 'Spanish Female'
 
 // set the default voice
-d3.select('select').property("selectedIndex", index);
+d3.select('select').property('selectedIndex', index);
 responsiveVoice.setDefaultVoice(currentVoice)
 
 // Fire the lang function according to the selector
-d3.select("select").on("change", lang);
+d3.select('select').on('change', lang);
 
 function lang() {
-  var selectedValue = d3.event.target.value;
+  let selectedValue = d3.event.target.value;
   currentVoice = selectedValue;
   // Set the voice
   return responsiveVoice.setDefaultVoice(selectedValue);
@@ -174,22 +169,22 @@ function lang() {
 // create an object that allows us to use an English country name
 // to lookup the ISO-3166-1 alpha-2 country code
 var alpha2Lookup = {};
-countriesAlpha2.forEach(function (d) {
+countriesAlpha2.forEach(d => {
   alpha2Lookup[d.Name] = d.Code;
 })
 
 // draw the map
-d3.json("world.json", function(error, d) {
+d3.json('world.json', (error, d) => {
   topojson.presimplify(d)
   
-  var map = new StaticCanvasMap({
-    element: "body",
+  let map = new StaticCanvasMap({
+    element: 'body',
     width: width,
     projection: d3.geo.robinson(),
     data: [{
-      features: topojson.feature(d, d.objects["countries"]),
+      features: topojson.feature(d, d.objects['countries']),
       static: {
-        prepaint: function(parameters) {
+        prepaint: parameters => {
           parameters.context.beginPath()
           parameters.path(graticule())
           parameters.context.lineWidth = 0.5
@@ -197,22 +192,22 @@ d3.json("world.json", function(error, d) {
           parameters.context.stroke()
 
           parameters.context.beginPath()
-          parameters.path({type: "Sphere"})
+          parameters.path({type: 'Sphere'})
           parameters.context.lineWidth = 1
           parameters.context.strokeStyle = 'rgb(30,30,30)'
           parameters.context.stroke()
         },
-        paintfeature: function(parameters, d) {
+        paintfeature: (parameters, d) => {
           parameters.context.lineWidth = 0.5
           parameters.context.strokeStyle = '#fff' // rgb(30,30,30)
           parameters.context.stroke()
 
-          parameters.context.fillStyle = "#bbb"; // rgb(188, 223, 255)
+          parameters.context.fillStyle = '#bbb'; // rgb(188, 223, 255)
           parameters.context.fill()
         }
       },
       dynamic: {
-        postpaint: function(parameters) {
+        postpaint: parameters => {
           if (!hover)
             return
 
@@ -223,13 +218,13 @@ d3.json("world.json", function(error, d) {
         }
       },
       events: {
-        click: function(parameters, d) {
+        click: (parameters, d) => {
           console.log('d from click event', d);
 
           // speak silently to find out the language of the currentVoice
-          var language2 = languageCodeHash[currentVoice];
-          var countryName = d.id;
-          var countryCode;
+          let language2 = languageCodeHash[currentVoice];
+          let countryName = d.id;
+          let countryCode;
 
           switch(language2) {
             case 'ar':
@@ -279,7 +274,7 @@ d3.json("world.json", function(error, d) {
           // When clicking on a feature, say the name of that country
           d && responsiveVoice.speak(countryName)
         },
-        hover: function(parameters, d) {
+        hover: (parameters, d) => {
           hover = d
 
           parameters.map.paint()
