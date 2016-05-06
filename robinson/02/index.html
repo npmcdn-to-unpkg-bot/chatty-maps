@@ -204,10 +204,10 @@ d3.json("world.json", function(error, d) {
         },
         paintfeature: function(parameters, d) {
           parameters.context.lineWidth = 0.5
-          parameters.context.strokeStyle = 'rgb(30,30,30)'
+          parameters.context.strokeStyle = '#fff' // rgb(30,30,30)
           parameters.context.stroke()
 
-          parameters.context.fillStyle = "rgb(188, 223, 255)";
+          parameters.context.fillStyle = "#bbb"; // rgb(188, 223, 255)
           parameters.context.fill()
         }
       },
